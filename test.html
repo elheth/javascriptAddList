@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        .container1 {
+            width: 97%;
+            height: 240px;
+            margin: auto;
+            padding: 10px;
+            border:1px solid black
+                    }
+        .one {
+            width: 15%;
+            height: 200px;
+            background: white;
+            float: left;
+                }
+        .two {
+            margin-left: 18%;
+            height: 200px;
+            background: white;
+                    }
+        .idme{
+            display:inline-block ;
+            color: gray;
+            }
+        .priceme{
+            float: right;
+                }
+        
+        
+        
+        
+
+    </style>
+</head>
+<body>
+
+
+
+
+<div class="container-fluid">
+  <h2>Verkauft</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float: right">+ add car</button>
+ 
+    <div style="margin-top: 2cm">
+        <ul id="ul">
+
+        </ul>
+    </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a car</h4>
+        </div>
+        <div class="modal-body">
+        Photo :<input type="text" id="image"> <br>
+        Model :<input type="text" id="model"> <br>
+        ID    :<input type="text" id="id"> <br>
+        Price :<input type="text" id="price"> <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" onclick="addMe()" data-dismiss="modal">submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<script>
+    function addMe() {
+      const arrayCar = []
+      var m = document.getElementById('model').value
+      var i= document.getElementById('id').value
+      var p= document.getElementById('price').value
+      var imageUrl =  document.getElementById('image').value
+
+
+      var currentCar = new currentCarMe(m,i,p,imageUrl)
+
+        var ul = document.getElementById("ul")
+        var li = document.createElement("li")
+        var div = document.createElement("div")
+        div.setAttribute("class","container1")
+        
+        var div1 = document.createElement("div")
+        div1.setAttribute("class","one")
+        var div2 = document.createElement("div")
+        div2.setAttribute("class","two")
+        
+        
+        var image = document.createElement("img")
+        image.setAttribute("src",imageUrl)
+        image.setAttribute("height","200")
+        image.setAttribute("width","200")
+        
+
+        var model = document.createElement("h1")
+        model.innerText=currentCar.model
+
+        var id = document.createElement("h4")
+        id.setAttribute("class","idme")
+        id.innerText="id :"+currentCar.id
+
+        var price = document.createElement("h2")
+        price.setAttribute("class","priceme")
+        price.innerText="price :"+currentCar.price
+
+        div1.appendChild(image)
+        div2.appendChild(model)
+        div2.appendChild(id)
+        div2.appendChild(price)
+        
+        
+        
+        
+
+
+
+
+        div.appendChild(div1)
+        div.appendChild(div2)
+        li.appendChild(div)
+        ul.appendChild(li)
+
+
+
+
+    }
+
+
+
+
+
+
+class currentCarMe {
+  constructor(model,id,price,imageUrl) {
+      this.model = model;
+      this.imageUrl = imageUrl;
+      this.id = id;
+      this.price = price;
+  }
+}
+
+
+
+</script>
+</body>
+</html>
